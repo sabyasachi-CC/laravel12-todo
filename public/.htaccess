@@ -1,0 +1,13 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /laravel/laravel12-todo/public/
+
+    # Redirect URLs containing index.php
+    RewriteCond %{THE_REQUEST} \s/+laravel/laravel12-todo/public/index\.php(?:[?\s]) [NC]
+    RewriteRule ^index\.php/?(.*)$ /laravel/laravel12-todo/public/$1 [R=302,L,NE]
+
+    # Forward requests to Laravel
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^ index.php [L]
+</IfModule>
